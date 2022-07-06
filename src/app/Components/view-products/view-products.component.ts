@@ -8,19 +8,29 @@ import { Product } from 'src/app/Product';
 })
 export class ViewProductsComponent implements OnInit {
  update_product: Product;
- indexNumber: number
   @Input() products: Product[];
   @Output() updateProduct : EventEmitter<Product> = new EventEmitter()
   @Output() productIndex : EventEmitter<number> = new EventEmitter()
-  constructor() { }
-  ngOnInit(): void {
-  }
+  @Output() productDeleteEmit : EventEmitter<number> = new EventEmitter()
+  constructor() {
+    this.update_product = {
+      id: "0",
+      name: "null",
+      quantity: 0,
+      purchasePrice: 1,
+      salePrice: 2,
+      availble: true
+    }
+   }
+  ngOnInit(): void {}
   productUpdate(product:Product, index: number){
     this.update_product = product
-    this.indexNumber = index
+    this.productIndex.emit(index)
   }
   updateProductEmit(product:Product){
     this.updateProduct.emit(product)
-    this.productIndex.emit(this.indexNumber)
+  }
+  productDelete(index:number){
+    this.productDeleteEmit.emit(index)
   }
 }

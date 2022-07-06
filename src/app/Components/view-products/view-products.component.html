@@ -20,7 +20,7 @@
             <td>{{product.salePrice}}</td>
             <td>
               <button class="btn btn-success mx-2" id="productNumber{{i}}" (click)="productUpdate(product, i)" data-bs-toggle="modal" data-bs-target="#updateProductModal">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="productDelete(i)">Delete</button>
             </td>
           </tr>
         </tbody>
