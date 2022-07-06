@@ -7,6 +7,8 @@ import { ViewProductsComponent } from './Components/view-products/view-products.
 import { AddProductsComponent } from './Components/add-products/add-products.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { ProductsChatComponent } from './Components/products-chat/products-chat.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateProductComponent } from './Components/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ProductsChatComponent } from './Components/products-chat/products-chat.
     ViewProductsComponent,
     AddProductsComponent,
     ProductsComponent,
-    ProductsChatComponent
+    ProductsChatComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
