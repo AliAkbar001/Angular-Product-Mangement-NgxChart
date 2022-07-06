@@ -1,1 +1,27 @@
-<p>add-products works!</p>
+<div>
+    <form>
+        <div class="form-group my-3">
+          <label for="product-id">Product ID</label>
+          <input type="text" class="form-control" id="prodtuct-id" name="prodtuct-id" placeholder="Enter Product ID">
+          <small class="form-text text-muted">Product ID must be unique</small>
+        </div>
+        <div class="form-group my-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Product Name">
+        </div>
+        <div class="form-group my-3">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Product Quantity">
+        </div>
+        <div class="form-group my-3">
+            <label for="purchase-price">Purchase Price</label>
+            <input type="number" class="form-control" id="purchase-price" name="purchase-price" placeholder="Enter Product Purchase Price">
+        </div>
+        <div class="form-group my-3">
+            <label for="sale-price">Sale Price</label>
+            <input type="number" class="form-control" id="sale-price" name="sale-price" placeholder="Enter Product Sale Price">
+            <small class="form-text text-muted">Sale price must be more or equal than purchase price</small>
+        </div>
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+      </form>
+</div>
