@@ -4,4 +4,5 @@ export class Product{
     quantity: number
     purchasePrice: number
     salePrice: number
-}
+    availble: boolean
+};
