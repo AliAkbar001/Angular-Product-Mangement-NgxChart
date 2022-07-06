@@ -8,56 +8,31 @@ import { Product } from 'src/app/Product';
 })
 export class ProductsComponent implements OnInit {
   products : Product[]
+  indexNumber: number
+  localProducts: string | null;
   constructor() {
-      this.products = [{
-        id: "1",
-        name: "Pepsi",
-        quantity: 200,
-        purchasePrice: 25,
-        salePrice: 30,
-        availble: true,
-      },{
-        id: "2",
-        name: "lays",
-        quantity: 150,
-        purchasePrice: 40,
-        salePrice: 50,
-        availble: true,
-      },{
-        id: "3",
-        name: "Biscuits",
-        quantity: 220,
-        purchasePrice: 15,
-        salePrice: 25,
-        availble: true,
-      },{
-        id: "4",
-        name: "Candy",
-        quantity: 400,
-        purchasePrice: 2,
-        salePrice: 3,
-        availble: true,
-      },{
-        id: "5",
-        name: "Juices",
-        quantity: 80,
-        purchasePrice: 20,
-        salePrice: 35,
-        availble: true,
-      },{
-        id: "6",
-        name: "Cookies",
-        quantity: 130,
-        purchasePrice: 90,
-        salePrice: 120,
-        availble: true,
-    }] 
+    this.localProducts = localStorage.getItem("products")
+    if(this.localProducts === null){
+      this.products = []
+    }else{
+      this.products = JSON.parse(this.localProducts)
+    } 
   }
   ngOnInit(): void {}
   insertProduct(product: Product){
     this.products.push(product)
+    localStorage.setItem("todos", JSON.stringify(this.products))
+  }
+  productIndex(index: number){
+    this.indexNumber = index
   }
   modifyProduct(product:Product){
-    //alert(product)
+    this.products[this.indexNumber].id = product.id;
+    this.products[this.indexNumber].name = product.name;
+    this.products[this.indexNumber].quantity = product.quantity;
+    this.products[this.indexNumber].purchasePrice = product.purchasePrice;
+    this.products[this.indexNumber].salePrice = product.salePrice;
+    localStorage.setItem("todos", JSON.stringify(this.products))
   }
+  
 }

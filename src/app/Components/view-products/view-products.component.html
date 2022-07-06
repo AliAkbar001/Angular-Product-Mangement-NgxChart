@@ -19,7 +19,7 @@
             <td>{{product.purchasePrice}}</td>
             <td>{{product.salePrice}}</td>
             <td>
-              <button class="btn btn-success mx-2" id="productNumber{{i}}" (click)="productUpdate(product)" data-bs-toggle="modal" data-bs-target="#updateProductModal">Edit</button>
+              <button class="btn btn-success mx-2" id="productNumber{{i}}" (click)="productUpdate(product, i)" data-bs-toggle="modal" data-bs-target="#updateProductModal">Edit</button>
               <button class="btn btn-danger">Delete</button>
             </td>
           </tr>
@@ -33,7 +33,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-update-product [update_product]="update_product"></app-update-product>
+          <app-update-product [update_product]="update_product" (updateProductEmit)="updateProductEmit($event)"></app-update-product>
         </div>
       </div>
     </div>

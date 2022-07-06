@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/Product';
 
 @Component({
@@ -7,15 +7,12 @@ import { Product } from 'src/app/Product';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit {
-@Input() update_product : Product
+  @Input() update_product : Product
+  @Output() updateProductEmit : EventEmitter<Product> = new EventEmitter()
   constructor() { }
-
   ngOnInit(): void {
   }
   handleSubmit(){
-
-  }
-  modifyProduct(product:Product){
-   
+   this.updateProductEmit.emit(this.update_product)
   }
 }
