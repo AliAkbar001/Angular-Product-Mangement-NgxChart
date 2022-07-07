@@ -9,8 +9,55 @@ import { SubjectServiceService } from 'src/app/services/subject-service.service'
 })
 export class ProductsChatComponent implements OnInit {
   productList: Product[]
+  listText = [{
+    name:"Apple",
+    value: 900
+  },{
+    name:"Orange",
+    value: 600
+  },{
+    name:"Banana",
+    value: 700
+  },{
+    name:"Pomigarnate",
+    value: 1000
+  }]
+  nestedListText = [{
+      name:"Weeks",
+      series:[{
+        name:"Monday",
+        value: 1
+      },{
+        name:"Wednesday",
+        value: 3
+      },{
+        name:"Thursday",
+        value: 4
+      },{
+        name:"Sunday",
+        value: 7
+      }]
+    },{
+      name:"Years",
+      series:[{
+        name:"January",
+        value: 31
+      },{
+        name:"Faburay",
+        value: 28
+      },{
+        name:"March",
+        value: 30
+      },{
+        name:"May",
+        value: 31
+      },{
+        name:"June",
+        value: 30
+      }]
+    }]
   constructor(private SubjectInServices :SubjectServiceService) {
-    //this.SubjectInServices.listProduct.subscribe((e) => this.productList = e)
+    this.productList = this.SubjectInServices.products
    }
 
   ngOnInit(): void {}
