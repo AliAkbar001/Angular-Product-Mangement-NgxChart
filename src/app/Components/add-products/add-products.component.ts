@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from 'src/app/Product';
+import { SubjectServiceService } from 'src/app/services/subject-service.service';
 
 @Component({
   selector: 'app-add-products',
@@ -12,9 +14,13 @@ export class AddProductsComponent implements OnInit {
   quantity: number;
   purchase_price: number;
   sale_price: number;
-  @Output() addProduct : EventEmitter<Product> = new EventEmitter()
-  constructor() {  }
-  ngOnInit(): void {}
+ // private updateProductSource = new BehaviorSubject<Product>()
+ // currentProduct = this.updateProductSource.asObservable();
+  //@Output() addProduct : EventEmitter<Product> = new EventEmitter()
+  constructor(private SubjectInServices :SubjectServiceService) { }
+  ngOnInit(): void {
+    
+  }
   handleSubmit(){
     const product = {
       id:this.p_id,
@@ -29,7 +35,9 @@ export class AddProductsComponent implements OnInit {
     }else if(product.salePrice < product.purchasePrice){
       alert("Sale price must be more than purchase price")
     }else{
-      this.addProduct.emit(product)
+      this.SubjectInServices.updateProductList(product)
+      alert(product.name + " add Successfully")
+     // this.addProduct.emit(product)
     }
   }
 }
