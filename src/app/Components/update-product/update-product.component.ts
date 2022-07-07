@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/Product';
+import { SubjectServiceService } from 'src/app/services/subject-service.service';
 
 @Component({
   selector: 'app-update-product',
@@ -8,10 +9,12 @@ import { Product } from 'src/app/Product';
 })
 export class UpdateProductComponent implements OnInit {
   @Input() update_product : Product 
-  @Output() updateProductEmit : EventEmitter<Product> = new EventEmitter()
-  constructor() {}
+  @Input() productIndex :number
+ // @Output() updateProductEmit : EventEmitter<Product> = new EventEmitter()
+  constructor(private SubjectInServices :SubjectServiceService) {}
   ngOnInit(): void {}
   handleSubmit(){
-   this.updateProductEmit.emit(this.update_product)
+    this.SubjectInServices.modifyProductFunction(this.update_product, this.productIndex)
+  // this.updateProductEmit.emit(this.update_product)
   }
 }

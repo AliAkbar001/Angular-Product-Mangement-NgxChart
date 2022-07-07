@@ -35,8 +35,7 @@ export class AddProductsComponent implements OnInit {
     }else if(product.salePrice < product.purchasePrice){
       alert("Sale price must be more than purchase price")
     }else{
-      this.SubjectInServices.updateProductList(product)
-      alert(product.name + " add Successfully")
+      this.SubjectInServices.insertProductFunctuion(product)
      // this.addProduct.emit(product)
     }
   }
