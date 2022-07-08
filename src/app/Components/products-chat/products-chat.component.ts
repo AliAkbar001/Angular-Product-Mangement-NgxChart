@@ -27,31 +27,49 @@ export class ProductsChatComponent implements OnInit {
       name:"Weeks",
       series:[{
         name:"Monday",
-        value: 1
+        value: 100
       },{
         name:"Wednesday",
-        value: 3
+        value: 330
       },{
         name:"Thursday",
-        value: 4
+        value: 40
       },{
         name:"Sunday",
-        value: 7
+        value: 700
       }]
     },{
       name:"Years",
       series:[{
         name:"January",
-        value: 31
+        value: 310
       },{
         name:"Faburay",
-        value: 28
+        value: 208
       },{
         name:"March",
         value: 30
       },{
         name:"May",
-        value: 31
+        value: 731
+      },{
+        name:"June",
+        value: 30
+      }]
+    },{
+      name:"Book",
+      series:[{
+        name:"January",
+        value: 910
+      },{
+        name:"Faburay",
+        value: 428
+      },{
+        name:"March",
+        value: 30
+      },{
+        name:"May",
+        value: 731
       },{
         name:"June",
         value: 30
@@ -68,14 +86,21 @@ export class ProductsChatComponent implements OnInit {
     yAxis: Boolean = true
     legendTitle: string = "Products"
     legendTitleMulti: string = 'Months'
-    legendPosition: string = 'right'
+    legendPosition: string = "right"
     legend: boolean = true
     showDataLabel: boolean = true //number on bars
     roundEdges: boolean = true
   constructor(private SubjectInServices :SubjectServiceService) {
     this.productList = this.SubjectInServices.products
    }
-
   ngOnInit(): void {}
-
+  onSelect(data: any){
+   //alert("Select " + JSON.stringify(data)) 
+  }
+  onDeactivate(data: any){
+  // alert("Deactivate " + JSON.stringify(data)) 
+  }
+  onActive(data: any){ 
+    //alert("Active " + JSON.stringify(data)) 
+  }
 }
