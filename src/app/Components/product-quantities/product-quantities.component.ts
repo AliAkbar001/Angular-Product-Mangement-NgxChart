@@ -4,11 +4,11 @@ import { Product } from 'src/app/Product';
 import { SubjectServiceService } from 'src/app/services/subject-service.service';
 
 @Component({
-  selector: 'app-products-chat',
-  templateUrl: './products-chat.component.html',
-  styleUrls: ['./products-chat.component.css']
+  selector: 'app-product-quantities',
+  templateUrl: './product-quantities.component.html',
+  styleUrls: ['./product-quantities.component.css']
 })
-export class ProductsChatComponent implements OnInit {
+export class ProductQuantitiesComponent implements OnInit {
   productList: Product[]
   listText = [{
     name:"Apple",
@@ -90,6 +90,12 @@ export class ProductsChatComponent implements OnInit {
     legend: boolean = true
     showDataLabel: boolean = true //number on bars
     roundEdges: boolean = true
+    showLegend: boolean = true;
+    showLabels: boolean = true;
+  
+    gradient: boolean = false;
+    isDoughnut: boolean = true;
+  
   constructor(private SubjectInServices :SubjectServiceService) {
     this.productList = this.SubjectInServices.products
    }
