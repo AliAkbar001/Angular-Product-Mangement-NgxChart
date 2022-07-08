@@ -1,3 +1,16 @@
-<div class="text-center">
-  <ngx-charts-bar-vertical [results]="listText"></ngx-charts-bar-vertical>
+<div class="d-flex align-items-center justify-content-center" >
+  <div>
+    <h4 class="text-center my-4">Products Profit</h4>
+    <ngx-charts-bar-vertical 
+      [results]="listText" 
+      [view]="view" 
+      [scheme]="colorScheme"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [legend]="legend"
+      [legendTitle]="legendTitle"
+      [showDataLabel]="showDataLabel"
+      [roundEdges]="roundEdges"
+    ></ngx-charts-bar-vertical>
+  </div>
 </div>

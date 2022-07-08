@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { Product } from 'src/app/Product';
 import { SubjectServiceService } from 'src/app/services/subject-service.service';
 
@@ -56,6 +57,21 @@ export class ProductsChatComponent implements OnInit {
         value: 30
       }]
     }]
+    view: [number, number] = [500, 300] //Size of chart [width, height]
+    colorScheme: Color  = {
+      name: 'myScheme',
+      selectable: true,
+      group: ScaleType.Ordinal,
+      domain: ["#DC143C", "#00FF00", "#BC8F8F", "#40E0D0"]
+    }
+    xAxis: Boolean = true
+    yAxis: Boolean = true
+    legendTitle: string = "Products"
+    legendTitleMulti: string = 'Months'
+    legendPosition: string = 'right'
+    legend: boolean = true
+    showDataLabel: boolean = true //number on bars
+    roundEdges: boolean = true
   constructor(private SubjectInServices :SubjectServiceService) {
     this.productList = this.SubjectInServices.products
    }
