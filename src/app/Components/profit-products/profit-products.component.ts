@@ -10,77 +10,25 @@ import { SubjectServiceService } from 'src/app/services/subject-service.service'
 })
 export class ProfitProductsComponent implements OnInit {
   productList: Product[]
-  listText = [{
-    name:"Apple",
-    value: 900
-  },{
-    name:"Orange",
-    value: 600
-  },{
-    name:"Banana",
-    value: 700
-  },{
-    name:"Pomigarnate",
-    value: 1000
-  }]
-  nestedListText = [{
-      name:"Weeks",
-      series:[{
-        name:"Monday",
-        value: 100
-      },{
-        name:"Wednesday",
-        value: 330
-      },{
-        name:"Thursday",
-        value: 40
-      },{
-        name:"Sunday",
-        value: 700
-      }]
-    },{
-      name:"Years",
-      series:[{
-        name:"January",
-        value: 310
-      },{
-        name:"Faburay",
-        value: 208
-      },{
-        name:"March",
-        value: 30
-      },{
-        name:"May",
-        value: 731
-      },{
-        name:"June",
-        value: 30
-      }]
-    },{
-      name:"Book",
-      series:[{
-        name:"January",
-        value: 910
-      },{
-        name:"Faburay",
-        value: 428
-      },{
-        name:"March",
-        value: 30
-      },{
-        name:"May",
-        value: 731
-      },{
-        name:"June",
-        value: 30
-      }]
-    }]
+  productsProfit : {name:string, value:number}[] = []
+  productsPrices : {
+    name:string, 
+    series:{
+      name:string, 
+      value: number
+    }[]}[] = []
     view: [number, number] = [500, 300] //Size of chart [width, height]
     colorScheme: Color  = {
       name: 'myScheme',
       selectable: true,
       group: ScaleType.Ordinal,
       domain: ["#DC143C", "#00FF00", "#BC8F8F", "#40E0D0"]
+    }
+    colorSchemeTwo: Color  = {
+      name: 'myScheme',
+      selectable: true,
+      group: ScaleType.Ordinal,
+      domain: ["#6495ED", "#00FFFF"]
     }
     xAxis: Boolean = true
     yAxis: Boolean = true
@@ -92,6 +40,24 @@ export class ProfitProductsComponent implements OnInit {
     roundEdges: boolean = true
   constructor(private SubjectInServices :SubjectServiceService) {
     this.productList = this.SubjectInServices.products
+    for(var i = 0; i<this.productList.length; i++){
+      var product = { 
+        name:this.productList[i].name, 
+        value:this.productList[i].salePrice - this.productList[i].purchasePrice 
+      }
+      var prices = {
+        name: this.productList[i].name,
+        series:[{
+          name:"Purchase Price",
+          value:this.productList[i].purchasePrice
+        },{
+          name:"Sale Price",
+          value:this.productList[i].salePrice
+        }]
+      }
+      this.productsProfit.push(product)
+      this.productsPrices.push(prices)
+    }
    }
   ngOnInit(): void {}
   onSelect(data: any){

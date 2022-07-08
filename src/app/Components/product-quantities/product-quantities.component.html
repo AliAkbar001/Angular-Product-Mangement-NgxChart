@@ -2,10 +2,11 @@
     <h4 class="text-center my-4">Products Quantity</h4>
     <div class="d-flex align-items-center justify-content-center">
       <ngx-charts-pie-chart 
-        [results]="listText" 
+        [results]="productsQuantity" 
         [view]="view" 
         [scheme]="colorScheme"
         [gradient]="gradient" 
+        [legendTitle]="legendTitle"
         [legend]="showLegend" 
         [labels]="showLabels"
         (activate)="onActive($event)"
@@ -13,7 +14,7 @@
         (select)="onSelect($event)"
       ></ngx-charts-pie-chart>
       <ngx-charts-pie-grid
-        [results]="listText" 
+        [results]="productsQuantity" 
         [view]="view" 
         [scheme]="colorScheme"
         (activate)="onActive($event)"
@@ -23,10 +24,11 @@
     </div>
     <div class="d-flex align-items-center justify-content-center">
       <ngx-charts-pie-chart 
-      [results]="listText" 
+      [results]="productsQuantity" 
       [view]="view" 
       [scheme]="colorScheme"
       [doughnut]="true"
+      [legendTitle]="legendTitle"
       [legend]="showLegend" 
         [labels]="showLabels"
       (activate)="onActive($event)"
@@ -35,7 +37,7 @@
     ></ngx-charts-pie-chart>
       
       <ngx-charts-advanced-pie-chart 
-      [results]="listText" 
+      [results]="productsQuantity" 
       [view]="view" 
       [scheme]="colorScheme"
       (activate)="onActive($event)"

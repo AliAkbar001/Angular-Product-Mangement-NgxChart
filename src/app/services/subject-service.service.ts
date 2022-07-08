@@ -6,7 +6,42 @@ import { Product } from '../Product';
   providedIn: 'root'
 })
 export class SubjectServiceService {
-  products : Product[]
+  products : Product[] = [{
+      id: "1",
+      name: "Juice",
+      quantity: 120,
+      purchasePrice: 25,
+      salePrice: 30,
+      availble: true
+    },{
+      id: "2",
+      name: "Pepsi",
+      quantity: 150,
+      purchasePrice: 45,
+      salePrice: 60,
+      availble: true
+    },{
+      id: "3",
+      name: "Lays",
+      quantity: 90,
+      purchasePrice: 25,
+      salePrice: 40,
+      availble: true
+    },{
+      id: "4",
+      name: "Biscuit",
+      quantity: 110,
+      purchasePrice: 15,
+      salePrice: 25,
+      availble: true
+    },{
+      id: "5",
+      name: "Cookies",
+      quantity: 140,
+      purchasePrice: 45,
+      salePrice: 70,
+      availble: true
+  }]
   localProducts: string | null
   modifyProduct = new BehaviorSubject<Product[]>([])
   productSource = new BehaviorSubject<Product>({ 
@@ -23,9 +58,7 @@ export class SubjectServiceService {
 
   constructor(){
     this.localProducts = localStorage.getItem("products")
-    if(this.localProducts === null){
-        this.products = []
-      }else{
+    if(this.localProducts !== null){
       this.products = JSON.parse(this.localProducts)
     } 
   }
